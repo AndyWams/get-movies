@@ -16,7 +16,8 @@ function SearchForm() {
       .then((response) => {
         const data = response.data;
         if (data.results.length === 0) {
-          setError("No Results found");
+          setError("No Results Found!");
+          setMovies([]);
         } else {
           setError("");
           setMovies(data.results);
