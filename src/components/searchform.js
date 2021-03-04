@@ -9,36 +9,38 @@ function SearchForm() {
   const [error, setError] = useState("");
   const searchMovies = (e) => {
     e.preventDefault();
-    axios
-      .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_BASE_URL_KEY}&language=en-US&query=${query}&page=1&include_adult=false`
-      )
-      .then((response) => {
-        const data = response.data;
-        if (data.results.length === 0) {
-          setError("No Results Found!");
-          setMovies([]);
-        } else {
-          setError("");
-          setMovies(data.results);
-        }
-      })
-      .catch((error) => {
-        const errorMsg = error.message;
-        setError(errorMsg);
-      });
+    if (query !== "") {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_BASE_URL_KEY}&language=en-US&query=${query}&page=1&include_adult=false`
+        )
+        .then((response) => {
+          const data = response.data;
+          if (data.results.length === 0) {
+            setError("No Results Found!");
+            setMovies([]);
+          } else {
+            setError("");
+            setMovies(data.results);
+          }
+        })
+        .catch((error) => {
+          const errorMsg = error.message;
+          setError(errorMsg);
+        });
+    }
   };
 
   return (
     <div className="wrapper">
       <h3>GET MOVIES</h3>
       <div className="form--wrapper">
-        <form className="form" onSubmit={searchMovies}>
+        <form className="form" onSubmit={searchMovies} autoComplete="off">
           <input
             className="input"
             type="text"
             name="query"
-            placeholder="i.e. Jurassic Park"
+            placeholder="Search movies..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
