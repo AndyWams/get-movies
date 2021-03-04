@@ -1,0 +1,61 @@
+.wrapper {
+  margin: 0;
+  padding: 7em 0em 3em;
+
+  .title {
+    font-size: 4.4rem;
+    text-align: center;
+  }
+
+  form {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 600px;
+    margin: 3em auto 2em;
+    input {
+      font-size: 1.6rem;
+      padding: 0.5rem 2rem;
+      line-height: 2.8rem;
+      border-radius: 10px 0px 0px 10px;
+      border: 1px solid #ddd;
+      &:focus {
+        outline: none;
+      }
+    }
+
+    button {
+      background-color: rgba(0, 0, 0, 0.75);
+      color: white;
+      height: 62px;
+      min-width: 150px;
+      border: 1px solid rgba(0, 0, 0, 0.75);
+      border-radius: 0px 10px 10px 0px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 250ms;
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.85);
+      }
+    }
+  }
+
+  .label {
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+  }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    .form--wrapper {
+      padding: 1em 1em;
+    }
+    form {
+      width: auto;
+      grid-template-columns: auto;
+      grid-row-gap: 13px;
+      input,
+      button {
+        border-radius: 10px;
+      }
+    }
+  }
+}
